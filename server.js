@@ -18,13 +18,8 @@ app.use((req, res, next) => {
     next();
 });
 
-// 1. Configuración de la conexión dinámica (Aiven en la nube / XAMPP local)
-const connectionString = process.env.DATABASE_URL || {
-    host: 'localhost',
-    user: 'root',      
-    password: '',      
-    database: 'control_escolar'
-};
+// 1. CONFIGURACIÓN CORREGIDA: Usa tu cadena de texto de Aiven directamente para asegurar la conexión en la nube
+const connectionString = "mysql://tu_usuario:tu_contraseña@tu_host_de_aiven:tu_puerto/defaultdb?ssl-mode=REQUIRED";
 
 const db = mysql.createConnection(connectionString);
 
@@ -100,20 +95,16 @@ app.get('/api/docentes', (req, res) => {
 app.post('/api/estudiantes', (req, res) => {
     const { nombre, edad, grado, observaciones, registrado_por } = req.body;
 
-    // Validación rigurosa de presencia de datos
     if (!nombre || edad === undefined || edad === null || !grado) {
         return res.status(400).json({ success: false, error: 'Nombre, edad y grado son obligatorios.' });
     }
 
-    // Forzar conversión limpia a número por seguridad
     const edadEntero = parseInt(edad, 10);
 
-    // Ajustamos la query para asegurar compatibilidad si la columna registrado_por no existiera o fallara
     const query = 'INSERT INTO estudiantes (nombre, edad, grado, observaciones, registrado_por) VALUES (?, ?, ?, ?, ?)';
     
     db.query(query, [nombre, edadEntero, grado, observaciones || '', registrado_por || 'Docente'], (err, result) => {
         if (err) {
-            // Muestra el error exacto de SQL en la terminal de VS Code para que sepas qué columna está fallando
             console.error('❌ Error de MySQL al insertar estudiante:', err.message);
             return res.status(500).json({ 
                 success: false, 
@@ -127,7 +118,6 @@ app.post('/api/estudiantes', (req, res) => {
 
 // Ruta para listar todos los estudiantes
 app.get('/api/estudiantes', (req, res) => {
-    // Si tu tabla no tiene 'fecha_registro', puedes cambiarlo a ORDER BY nombre o id
     const query = 'SELECT nombre, edad, grado, observaciones FROM estudiantes ORDER BY nombre ASC';
     db.query(query, (err, results) => {
         if (err) {
@@ -161,8 +151,8 @@ app.post('/api/docentes/eliminar', (req, res) => {
     });
 });
 
-// 3. Levantar el servidor local
-const PORT = 8080; 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Servidor backend corriendo en red local: http://192.168.123.43:${PORT}`);
+// 3. PUERTO ASIGNADO DINÁMICAMENTE PARA RENDER
+const PORT = process.env.PORT || 8080; 
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor backend activo en el puerto: ${PORT}`);
 });
