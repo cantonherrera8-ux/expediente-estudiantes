@@ -1,4 +1,3 @@
-// BUSCA EL EVENTO SUBMIT EN TU LOGIN.JS Y ASEGÚRATE DE QUE LA URL ESTÉ ASÍ:
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -7,8 +6,8 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const mensajeError = document.getElementById('mensaje-error');
 
     try {
-        // Usamos el puerto 8080 de forma dinámica con la IP actual
-        const urlLogin = `http://${window.location.hostname}:8080/api/login`;
+        // CORREGIDO: Apunta directamente al backend en Render de forma pública
+        const urlLogin = `https://expediente-estudiantes.onrender.com/api/login`;
 
         const respuesta = await fetch(urlLogin, {
             method: 'POST',
