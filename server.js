@@ -18,20 +18,22 @@ app.use((req, res, next) => {
     next();
 });
 
-// 1. Configuración de la conexión a XAMPP / MySQL
-const db = mysql.createConnection({
+// 1. Configuración de la conexión dinámica (Aiven en la nube / XAMPP local)
+const connectionString = process.env.DATABASE_URL || {
     host: 'localhost',
     user: 'root',      
     password: '',      
     database: 'control_escolar'
-});
+};
+
+const db = mysql.createConnection(connectionString);
 
 db.connect((err) => {
     if (err) {
-        console.error('❌ Error conectando a la base de datos de XAMPP:', err);
+        console.error('❌ Error conectando a la base de datos:', err);
         return;
     }
-    console.log('⚡ ¡Conectado con éxito a la base de datos MySQL en XAMPP!');
+    console.log('⚡ ¡Conectado con éxito a la base de datos MySQL!');
 });
 
 // 2. Ruta para el Login
