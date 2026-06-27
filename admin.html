@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Registro de Docentes</title>
+    <link rel="stylesheet" href="admin-estilos.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-info">
+            <span class="logo-mini">🏫</span>
+            <h1 id="bienvenida-admin">Panel Administrador</h1>
+        </div>
+        <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="card-modulo">
+            <h2>Registrar Nuevo Docente</h2>
+            <p class="descripcion">Asigna las credenciales para que el maestro acceda desde su computadora o celular.</p>
+            
+            <!-- El ID correcto que escuchará tu script -->
+            <form id="form-maestro">
+                <div class="grupo-campo">
+                    <label for="nombre_completo">Nombre Completo del Docente</label>
+                    <input type="text" id="nombre_completo" required placeholder="Ej. Prof. Carlos Mendoza">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="nuevo_usuario">Usuario de Acceso</label>
+                    <input type="text" id="nuevo_usuario" required placeholder="Ej. carlos.mendoza">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="nuevo_password">Contraseña</label>
+                    <input type="password" id="nuevo_password" required placeholder="Defina una contraseña inicial">
+                </div>
+
+                <button type="submit" class="btn-registrar">Crear Cuenta de Docente</button>
+            </form>
+            <div id="msg-registro" class="alerta" style="display: none; margin-top: 15px; text-align: center; font-weight: bold;"></div>
+        </section>
+
+        <section class="card-modulo text-center">
+            <h2>Docentes Autorizados</h2>
+            <p class="descripcion">Lista del personal con permisos vigentes en el sistema.</p>
+            
+            <div class="tabla-responsiva">
+                <table id="tabla-docentes">
+                    <thead>
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Usuario</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí JavaScript inyectará las filas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

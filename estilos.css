@@ -1,0 +1,137 @@
+/* --- ESTILOS GLOBALES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- TARJETA DE LOGIN (MÓVIL POR DEFECTO) --- */
+.login-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Espacio del Logo */
+#colegio-logo {
+    max-width: 140px;  /* Puedes subirlo a 140px o 150px si es muy horizontal */
+    max-height: 120px; 
+    object-fit: contain;
+}
+
+#colegio-logo {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: contain;
+}
+
+#logo-placeholder {
+    font-size: 60px;
+    background: #f0f4f8;
+    width: 100px;
+    height: 100px;
+    display: none; /* Se activa dinámicamente si no encuentra la imagen */
+    line-height: 100px;
+    border-radius: 50%;
+    color: #1e3c72;
+}
+
+h2 {
+    color: #111;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+/* --- FORMULARIO E INPUTS --- */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px; /* Tamaño grande y cómodo para pantallas táctiles */
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #203a43;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(32, 58, 67, 0.2);
+}
+
+/* --- BOTÓN DE ACCESO --- */
+.btn-ingresar {
+    width: 100%;
+    padding: 14px;
+    background: #203a43;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-ingresar:hover {
+    background: #2c5364;
+}
+
+/* Alertas de error */
+.error-alerta {
+    background-color: #ffeef0;
+    color: #d73a49;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    border: 1px solid #ffccd1;
+}
+
+/* --- ADAPTACIÓN PARA COMPUTADORA (PANTALLAS GRANDES) --- */
+@media (min-width: 768px) {
+    .login-container {
+        max-width: 450px;
+        padding: 50px 40px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+}

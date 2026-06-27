@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Escolar - Expediente de Estudiantes</title>
+    <link rel="stylesheet" href="admin-estilos.css"> </head>
+<body>
+
+    <header class="navbar" style="background-color: #2c3e50;">
+        <div class="nav-info">
+            <span class="logo-mini">🎓</span>
+            <h1 id="bienvenida-docente">Portal del Docente</h1>
+        </div>
+        <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="card-modulo">
+            <h2>Registrar Alumno</h2>
+            <p class="descripcion">Agrega un nuevo estudiante al registro oficial del colegio.</p>
+            
+            <form id="form-estudiante">
+                <div class="grupo-campo">
+                    <label for="nombre_estudiante">Nombre Completo</label>
+                    <input type="text" id="nombre_estudiante" required placeholder="Ej. Juan Carlos Pérez">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="edad_estudiante">Edad</label>
+                    <input type="number" id="edad_estudiante" required placeholder="Ej. 12" min="3" max="25">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="grado_estudiante">Grado / Año</label>
+                    <input type="text" id="grado_estudiante" required placeholder="Ej. 6to Grado, 1er Año">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="observaciones">Observaciones / Historial</label>
+                    <textarea id="observaciones" rows="4" placeholder="Ficha médica, conducta o notas especiales..." style="width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 6px; font-size: 1rem; font-family: inherit; background-color: #f8fafc;"></textarea>
+                </div>
+
+                <button type="submit" class="btn-registrar" style="background-color: #2c3e50;">Guardar Expediente</button>
+            </form>
+            <div id="msg-estudiante" class="alerta" style="display: none;"></div>
+        </section>
+
+        <section class="card-modulo">
+            <h2>Expedientes Registrados</h2>
+            <p class="descripcion">Alumnos guardados en el sistema centralizado.</p>
+            
+            <div class="tabla-responsiva">
+                <table id="tabla-estudiantes">
+                    <thead>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Edad</th>
+                            <th>Grado</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="expediente.js"></script>
+</body>
+</html>
